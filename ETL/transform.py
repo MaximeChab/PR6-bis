@@ -27,3 +27,21 @@ def transformData(reading_path, writing_path) :
 
     df_locations.write.mode('overwrite').parquet(writing_path)
     print(f"data saved to {writing_path}")
+
+def transformLignes(reading_path, writing_path) :
+    print(f"Cleaning Lignes data")
+    lignes_schema = "lib_ligne STRING, type_ligne STRING, c_geo_d STRING, c_geo_f STRUCT<lon:DOUBLE, lat:DOUBLE>, geo_shape STRUCT<type:STRING, geometry:STRUCT<type:STRING,coordinates:ARRAY<ARRAY<STRING>>>>"
+
+    df_lignes = spark.read.schema(lignes_schema).json(f"hdfs://localhost:9000/{reading_path}/lignes.json")
+
+    df_lignes = df_lignes.select("lib_ligne", "geo_shape.geometry.coordinates", "type_ligne", "c_geo_d", "c_geo_f")
+    df_lignes.write.mode('overwrite').parquet(f"hdfs://localhost:9000/{writing_path}/lignes_shapes.parquet")
+
+
+    print(f"Cleaning Objets-trouves data")
+    lignes_schema = "date STRING, gc_obo_date_heure_restitution_c STRING, gc_obo_gare_origine_r_name STRING, gc_obo_nature_c STRING, gc_obo_type_c STRING"
+
+    df_objets_trouves = spark.read.schema(lignes_schema).json(f"hdfs://localhost:9000/{reading_path}/objets-trouves.json")
+
+    df_objets_trouves = df_objets_trouves.select("date", "gc_obo_date_heure_restitution_c", "gc_obo_gare_origine_r_name", "gc_obo_nature_c", "gc_obo_type_c")
+    df_objets_trouves.write.mode('overwrite').parquet(f"hdfs://localhost:9000/{writing_path}/objets-trouves.parquet")
