@@ -1,0 +1,524 @@
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+25/02/09 15:50:07 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[Stage 0:>                                                          (0 + 1) / 1][Stage 0:===========================================================(1 + 0) / 1]                                                                                [Stage 1:>                                                          (0 + 1) / 1]                                                                                [Stage 2:>                                                          (0 + 1) / 1]                                                                                [Stage 4:>                                                          (0 + 1) / 1]                                                                                [Stage 8:>                                                          (0 + 1) / 1]                                                                                [Stage 15:>                                                         (0 + 1) / 2][Stage 15:=============================>                            (1 + 1) / 2]                                                                                [Stage 18:>                                                         (0 + 1) / 1]                                                                                raw data saved to hdfs://localhost:9000/user/testbis/test.json
+Extracted and saved data from https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/liste-des-gares/records?limit=-1 in hdfs://localhost:9000/user/testbis/test.json
+root
+ |-- libelle: string (nullable = true)
+ |-- geo_point_2d: struct (nullable = true)
+ |    |-- lon: double (nullable = true)
+ |    |-- lat: double (nullable = true)
+ |-- departemen: string (nullable = true)
+ |-- fret: string (nullable = true)
+ |-- voyageurs: string (nullable = true)
+
++--------------------+--------------------+--------------------+----+---------+
+|             libelle|        geo_point_2d|          departemen|fret|voyageurs|
++--------------------+--------------------+--------------------+----+---------+
+|               Epfig|{7.45042847107005...|            BAS-RHIN|   N|        O|
+|      St-Pol-de-Léon|{-3.9873572013917...|           FINISTERE|   N|        O|
+|              Vannes|{-2.7524038812162...|            MORBIHAN|   O|        O|
+|          Bénestroff|{6.75062117390100...|             MOSELLE|   N|        O|
+|Château-Arnoux-St...|{5.99767202153532...|ALPES-DE-HAUTE-PR...|   O|        O|
++--------------------+--------------------+--------------------+----+---------+
+only showing top 5 rows
+
+data saved to hdfs://localhost:9000/user/testbis/clean.json
+transforming gares data
++--------------------+----------------+-----+---------+------------------+------------------+-----------------+
+|             libelle|      departemen| fret|voyageurs|          latitude|         longitude|             type|
++--------------------+----------------+-----+---------+------------------+------------------+-----------------+
+|           Abancourt|            OISE|false|     true| 49.68552581890106|1.7744954142042662|        Voyageurs|
+|            Abbaretz|LOIRE-ATLANTIQUE|false|     true| 47.55546171192477|-1.524313466657777|        Voyageurs|
+|           Abbeville|           SOMME| true|     true|50.101971205254344|1.8242999791392414|Fret et voyageurs|
+|               Ablon|    VAL-DE-MARNE|false|     true| 48.72396312660717| 2.417931573714534|        Voyageurs|
+|      Acheux-Franleu|           SOMME|false|     true| 50.08247940982133|1.6571743503789365|        Voyageurs|
+|              Achiet|   PAS-DE-CALAIS|false|     true| 50.13214093060273|2.7806221023317605|        Voyageurs|
+|Achères-Grand-Cor...|        YVELINES|false|     true|48.955284839240726| 2.092094579250712|        Voyageurs|
+|       Achères-Ville|        YVELINES|false|     true| 48.97011445873015|  2.07778153626187|        Voyageurs|
+|                Agay|             VAR|false|     true|   43.431734252121| 6.856677171132544|        Voyageurs|
+|                Agde|         HERAULT|false|     true| 43.31752025734746| 3.466942106026499|        Voyageurs|
++--------------------+----------------+-----+---------+------------------+------------------+-----------------+
+only showing top 10 rows
+
++-----------------+----+
+|             type|type|
++-----------------+----+
+|Fret et voyageurs|1057|
+|        Voyageurs|2268|
+|             Fret| 530|
++-----------------+----+
+
+end of the program
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+25/02/09 15:55:11 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[Stage 0:>                                                          (0 + 1) / 1][Stage 0:===========================================================(1 + 0) / 1]                                                                                [Stage 1:>                                                          (0 + 1) / 1]                                                                                [Stage 2:>                                                          (0 + 1) / 1]                                                                                [Stage 4:>                                                          (0 + 1) / 1]                                                                                [Stage 9:>                                                          (0 + 1) / 1]                                                                                [Stage 15:>                                                         (0 + 1) / 2][Stage 15:=============================>                            (1 + 1) / 2]                                                                                [Stage 18:>                                                         (0 + 1) / 1]                                                                                raw data saved to hdfs://localhost:9000/user/testbis/test.json
+Extracted and saved data from https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/liste-des-gares/records?limit=-1 in hdfs://localhost:9000/user/testbis/test.json
+root
+ |-- libelle: string (nullable = true)
+ |-- geo_point_2d: struct (nullable = true)
+ |    |-- lon: double (nullable = true)
+ |    |-- lat: double (nullable = true)
+ |-- departemen: string (nullable = true)
+ |-- fret: string (nullable = true)
+ |-- voyageurs: string (nullable = true)
+
++--------------------+--------------------+--------------------+----+---------+
+|             libelle|        geo_point_2d|          departemen|fret|voyageurs|
++--------------------+--------------------+--------------------+----+---------+
+|               Epfig|{7.45042847107005...|            BAS-RHIN|   N|        O|
+|      St-Pol-de-Léon|{-3.9873572013917...|           FINISTERE|   N|        O|
+|              Vannes|{-2.7524038812162...|            MORBIHAN|   O|        O|
+|          Bénestroff|{6.75062117390100...|             MOSELLE|   N|        O|
+|Château-Arnoux-St...|{5.99767202153532...|ALPES-DE-HAUTE-PR...|   O|        O|
++--------------------+--------------------+--------------------+----+---------+
+only showing top 5 rows
+
+data saved to hdfs://localhost:9000/user/testbis/clean.json
+transforming gares data
++--------------------+----------------+-----+---------+------------------+------------------+-----------------+
+|             libelle|      departemen| fret|voyageurs|          latitude|         longitude|             type|
++--------------------+----------------+-----+---------+------------------+------------------+-----------------+
+|           Abancourt|            OISE|false|     true| 49.68552581890106|1.7744954142042662|        Voyageurs|
+|            Abbaretz|LOIRE-ATLANTIQUE|false|     true| 47.55546171192477|-1.524313466657777|        Voyageurs|
+|           Abbeville|           SOMME| true|     true|50.101971205254344|1.8242999791392414|Fret et voyageurs|
+|               Ablon|    VAL-DE-MARNE|false|     true| 48.72396312660717| 2.417931573714534|        Voyageurs|
+|      Acheux-Franleu|           SOMME|false|     true| 50.08247940982133|1.6571743503789365|        Voyageurs|
+|              Achiet|   PAS-DE-CALAIS|false|     true| 50.13214093060273|2.7806221023317605|        Voyageurs|
+|Achères-Grand-Cor...|        YVELINES|false|     true|48.955284839240726| 2.092094579250712|        Voyageurs|
+|       Achères-Ville|        YVELINES|false|     true| 48.97011445873015|  2.07778153626187|        Voyageurs|
+|                Agay|             VAR|false|     true|   43.431734252121| 6.856677171132544|        Voyageurs|
+|                Agde|         HERAULT|false|     true| 43.31752025734746| 3.466942106026499|        Voyageurs|
++--------------------+----------------+-----+---------+------------------+------------------+-----------------+
+only showing top 10 rows
+
++-----------------+----+
+|             type|type|
++-----------------+----+
+|Fret et voyageurs|1057|
+|        Voyageurs|2268|
+|             Fret| 530|
++-----------------+----+
+
+end of the program
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+25/02/09 16:00:08 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[Stage 0:>                                                          (0 + 1) / 1]                                                                                [Stage 1:>                                                          (0 + 1) / 1]                                                                                [Stage 2:>                                                          (0 + 1) / 1]                                                                                [Stage 4:>                                                          (0 + 1) / 1]                                                                                [Stage 15:>                                                         (0 + 1) / 2][Stage 15:=============================>                            (1 + 1) / 2]                                                                                [Stage 18:>                                                         (0 + 1) / 1]                                                                                raw data saved to hdfs://localhost:9000/user/testbis/test.json
+Extracted and saved data from https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/liste-des-gares/records?limit=-1 in hdfs://localhost:9000/user/testbis/test.json
+root
+ |-- libelle: string (nullable = true)
+ |-- geo_point_2d: struct (nullable = true)
+ |    |-- lon: double (nullable = true)
+ |    |-- lat: double (nullable = true)
+ |-- departemen: string (nullable = true)
+ |-- fret: string (nullable = true)
+ |-- voyageurs: string (nullable = true)
+
++--------------------+--------------------+--------------------+----+---------+
+|             libelle|        geo_point_2d|          departemen|fret|voyageurs|
++--------------------+--------------------+--------------------+----+---------+
+|               Epfig|{7.45042847107005...|            BAS-RHIN|   N|        O|
+|      St-Pol-de-Léon|{-3.9873572013917...|           FINISTERE|   N|        O|
+|              Vannes|{-2.7524038812162...|            MORBIHAN|   O|        O|
+|          Bénestroff|{6.75062117390100...|             MOSELLE|   N|        O|
+|Château-Arnoux-St...|{5.99767202153532...|ALPES-DE-HAUTE-PR...|   O|        O|
++--------------------+--------------------+--------------------+----+---------+
+only showing top 5 rows
+
+data saved to hdfs://localhost:9000/user/testbis/clean.json
+transforming gares data
++--------------------+----------------+-----+---------+------------------+------------------+-----------------+
+|             libelle|      departemen| fret|voyageurs|          latitude|         longitude|             type|
++--------------------+----------------+-----+---------+------------------+------------------+-----------------+
+|           Abancourt|            OISE|false|     true| 49.68552581890106|1.7744954142042662|        Voyageurs|
+|            Abbaretz|LOIRE-ATLANTIQUE|false|     true| 47.55546171192477|-1.524313466657777|        Voyageurs|
+|           Abbeville|           SOMME| true|     true|50.101971205254344|1.8242999791392414|Fret et voyageurs|
+|               Ablon|    VAL-DE-MARNE|false|     true| 48.72396312660717| 2.417931573714534|        Voyageurs|
+|      Acheux-Franleu|           SOMME|false|     true| 50.08247940982133|1.6571743503789365|        Voyageurs|
+|              Achiet|   PAS-DE-CALAIS|false|     true| 50.13214093060273|2.7806221023317605|        Voyageurs|
+|Achères-Grand-Cor...|        YVELINES|false|     true|48.955284839240726| 2.092094579250712|        Voyageurs|
+|       Achères-Ville|        YVELINES|false|     true| 48.97011445873015|  2.07778153626187|        Voyageurs|
+|                Agay|             VAR|false|     true|   43.431734252121| 6.856677171132544|        Voyageurs|
+|                Agde|         HERAULT|false|     true| 43.31752025734746| 3.466942106026499|        Voyageurs|
++--------------------+----------------+-----+---------+------------------+------------------+-----------------+
+only showing top 10 rows
+
++-----------------+----+
+|             type|type|
++-----------------+----+
+|Fret et voyageurs|1057|
+|        Voyageurs|2268|
+|             Fret| 530|
++-----------------+----+
+
+end of the program
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+25/02/09 16:05:07 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[Stage 0:>                                                          (0 + 1) / 1]                                                                                [Stage 1:>                                                          (0 + 1) / 1]                                                                                [Stage 2:>                                                          (0 + 1) / 1]                                                                                [Stage 4:>                                                          (0 + 1) / 1]                                                                                [Stage 15:>                                                         (0 + 1) / 2][Stage 15:=============================>                            (1 + 1) / 2]                                                                                [Stage 18:>                                                         (0 + 1) / 1]                                                                                raw data saved to hdfs://localhost:9000/user/testbis/test.json
+Extracted and saved data from https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/liste-des-gares/records?limit=-1 in hdfs://localhost:9000/user/testbis/test.json
+root
+ |-- libelle: string (nullable = true)
+ |-- geo_point_2d: struct (nullable = true)
+ |    |-- lon: double (nullable = true)
+ |    |-- lat: double (nullable = true)
+ |-- departemen: string (nullable = true)
+ |-- fret: string (nullable = true)
+ |-- voyageurs: string (nullable = true)
+
++--------------------+--------------------+--------------------+----+---------+
+|             libelle|        geo_point_2d|          departemen|fret|voyageurs|
++--------------------+--------------------+--------------------+----+---------+
+|               Epfig|{7.45042847107005...|            BAS-RHIN|   N|        O|
+|      St-Pol-de-Léon|{-3.9873572013917...|           FINISTERE|   N|        O|
+|              Vannes|{-2.7524038812162...|            MORBIHAN|   O|        O|
+|          Bénestroff|{6.75062117390100...|             MOSELLE|   N|        O|
+|Château-Arnoux-St...|{5.99767202153532...|ALPES-DE-HAUTE-PR...|   O|        O|
++--------------------+--------------------+--------------------+----+---------+
+only showing top 5 rows
+
+data saved to hdfs://localhost:9000/user/testbis/clean.json
+transforming gares data
++--------------------+----------------+-----+---------+------------------+------------------+-----------------+
+|             libelle|      departemen| fret|voyageurs|          latitude|         longitude|             type|
++--------------------+----------------+-----+---------+------------------+------------------+-----------------+
+|           Abancourt|            OISE|false|     true| 49.68552581890106|1.7744954142042662|        Voyageurs|
+|            Abbaretz|LOIRE-ATLANTIQUE|false|     true| 47.55546171192477|-1.524313466657777|        Voyageurs|
+|           Abbeville|           SOMME| true|     true|50.101971205254344|1.8242999791392414|Fret et voyageurs|
+|               Ablon|    VAL-DE-MARNE|false|     true| 48.72396312660717| 2.417931573714534|        Voyageurs|
+|      Acheux-Franleu|           SOMME|false|     true| 50.08247940982133|1.6571743503789365|        Voyageurs|
+|              Achiet|   PAS-DE-CALAIS|false|     true| 50.13214093060273|2.7806221023317605|        Voyageurs|
+|Achères-Grand-Cor...|        YVELINES|false|     true|48.955284839240726| 2.092094579250712|        Voyageurs|
+|       Achères-Ville|        YVELINES|false|     true| 48.97011445873015|  2.07778153626187|        Voyageurs|
+|                Agay|             VAR|false|     true|   43.431734252121| 6.856677171132544|        Voyageurs|
+|                Agde|         HERAULT|false|     true| 43.31752025734746| 3.466942106026499|        Voyageurs|
++--------------------+----------------+-----+---------+------------------+------------------+-----------------+
+only showing top 10 rows
+
++-----------------+----+
+|             type|type|
++-----------------+----+
+|Fret et voyageurs|1057|
+|        Voyageurs|2268|
+|             Fret| 530|
++-----------------+----+
+
+end of the program
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+25/02/09 16:10:08 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[Stage 0:>                                                          (0 + 1) / 1]                                                                                [Stage 1:>                                                          (0 + 1) / 1]                                                                                [Stage 2:>                                                          (0 + 1) / 1]                                                                                [Stage 4:>                                                          (0 + 1) / 1]                                                                                [Stage 15:>                                                         (0 + 1) / 2][Stage 15:=============================>                            (1 + 1) / 2]                                                                                [Stage 18:>                                                         (0 + 1) / 1]                                                                                raw data saved to hdfs://localhost:9000/user/testbis/test.json
+Extracted and saved data from https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/liste-des-gares/records?limit=-1 in hdfs://localhost:9000/user/testbis/test.json
+root
+ |-- libelle: string (nullable = true)
+ |-- geo_point_2d: struct (nullable = true)
+ |    |-- lon: double (nullable = true)
+ |    |-- lat: double (nullable = true)
+ |-- departemen: string (nullable = true)
+ |-- fret: string (nullable = true)
+ |-- voyageurs: string (nullable = true)
+
++--------------------+--------------------+--------------------+----+---------+
+|             libelle|        geo_point_2d|          departemen|fret|voyageurs|
++--------------------+--------------------+--------------------+----+---------+
+|               Epfig|{7.45042847107005...|            BAS-RHIN|   N|        O|
+|      St-Pol-de-Léon|{-3.9873572013917...|           FINISTERE|   N|        O|
+|              Vannes|{-2.7524038812162...|            MORBIHAN|   O|        O|
+|          Bénestroff|{6.75062117390100...|             MOSELLE|   N|        O|
+|Château-Arnoux-St...|{5.99767202153532...|ALPES-DE-HAUTE-PR...|   O|        O|
++--------------------+--------------------+--------------------+----+---------+
+only showing top 5 rows
+
+data saved to hdfs://localhost:9000/user/testbis/clean.json
+transforming gares data
++--------------------+----------------+-----+---------+------------------+------------------+-----------------+
+|             libelle|      departemen| fret|voyageurs|          latitude|         longitude|             type|
++--------------------+----------------+-----+---------+------------------+------------------+-----------------+
+|           Abancourt|            OISE|false|     true| 49.68552581890106|1.7744954142042662|        Voyageurs|
+|            Abbaretz|LOIRE-ATLANTIQUE|false|     true| 47.55546171192477|-1.524313466657777|        Voyageurs|
+|           Abbeville|           SOMME| true|     true|50.101971205254344|1.8242999791392414|Fret et voyageurs|
+|               Ablon|    VAL-DE-MARNE|false|     true| 48.72396312660717| 2.417931573714534|        Voyageurs|
+|      Acheux-Franleu|           SOMME|false|     true| 50.08247940982133|1.6571743503789365|        Voyageurs|
+|              Achiet|   PAS-DE-CALAIS|false|     true| 50.13214093060273|2.7806221023317605|        Voyageurs|
+|Achères-Grand-Cor...|        YVELINES|false|     true|48.955284839240726| 2.092094579250712|        Voyageurs|
+|       Achères-Ville|        YVELINES|false|     true| 48.97011445873015|  2.07778153626187|        Voyageurs|
+|                Agay|             VAR|false|     true|   43.431734252121| 6.856677171132544|        Voyageurs|
+|                Agde|         HERAULT|false|     true| 43.31752025734746| 3.466942106026499|        Voyageurs|
++--------------------+----------------+-----+---------+------------------+------------------+-----------------+
+only showing top 10 rows
+
++-----------------+----+
+|             type|type|
++-----------------+----+
+|Fret et voyageurs|1057|
+|        Voyageurs|2268|
+|             Fret| 530|
++-----------------+----+
+
+end of the program
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+25/02/09 16:15:07 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[Stage 0:>                                                          (0 + 1) / 1]                                                                                [Stage 1:>                                                          (0 + 1) / 1]                                                                                [Stage 2:>                                                          (0 + 1) / 1]                                                                                [Stage 4:>                                                          (0 + 1) / 1]                                                                                [Stage 15:>                                                         (0 + 1) / 2][Stage 15:=============================>                            (1 + 1) / 2]                                                                                [Stage 18:>                                                         (0 + 1) / 1]                                                                                raw data saved to hdfs://localhost:9000/user/testbis/test.json
+Extracted and saved data from https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/liste-des-gares/records?limit=-1 in hdfs://localhost:9000/user/testbis/test.json
+root
+ |-- libelle: string (nullable = true)
+ |-- geo_point_2d: struct (nullable = true)
+ |    |-- lon: double (nullable = true)
+ |    |-- lat: double (nullable = true)
+ |-- departemen: string (nullable = true)
+ |-- fret: string (nullable = true)
+ |-- voyageurs: string (nullable = true)
+
++--------------------+--------------------+--------------------+----+---------+
+|             libelle|        geo_point_2d|          departemen|fret|voyageurs|
++--------------------+--------------------+--------------------+----+---------+
+|               Epfig|{7.45042847107005...|            BAS-RHIN|   N|        O|
+|      St-Pol-de-Léon|{-3.9873572013917...|           FINISTERE|   N|        O|
+|              Vannes|{-2.7524038812162...|            MORBIHAN|   O|        O|
+|          Bénestroff|{6.75062117390100...|             MOSELLE|   N|        O|
+|Château-Arnoux-St...|{5.99767202153532...|ALPES-DE-HAUTE-PR...|   O|        O|
++--------------------+--------------------+--------------------+----+---------+
+only showing top 5 rows
+
+data saved to hdfs://localhost:9000/user/testbis/clean.json
+transforming gares data
++--------------------+----------------+-----+---------+------------------+------------------+-----------------+
+|             libelle|      departemen| fret|voyageurs|          latitude|         longitude|             type|
++--------------------+----------------+-----+---------+------------------+------------------+-----------------+
+|           Abancourt|            OISE|false|     true| 49.68552581890106|1.7744954142042662|        Voyageurs|
+|            Abbaretz|LOIRE-ATLANTIQUE|false|     true| 47.55546171192477|-1.524313466657777|        Voyageurs|
+|           Abbeville|           SOMME| true|     true|50.101971205254344|1.8242999791392414|Fret et voyageurs|
+|               Ablon|    VAL-DE-MARNE|false|     true| 48.72396312660717| 2.417931573714534|        Voyageurs|
+|      Acheux-Franleu|           SOMME|false|     true| 50.08247940982133|1.6571743503789365|        Voyageurs|
+|              Achiet|   PAS-DE-CALAIS|false|     true| 50.13214093060273|2.7806221023317605|        Voyageurs|
+|Achères-Grand-Cor...|        YVELINES|false|     true|48.955284839240726| 2.092094579250712|        Voyageurs|
+|       Achères-Ville|        YVELINES|false|     true| 48.97011445873015|  2.07778153626187|        Voyageurs|
+|                Agay|             VAR|false|     true|   43.431734252121| 6.856677171132544|        Voyageurs|
+|                Agde|         HERAULT|false|     true| 43.31752025734746| 3.466942106026499|        Voyageurs|
++--------------------+----------------+-----+---------+------------------+------------------+-----------------+
+only showing top 10 rows
+
++-----------------+----+
+|             type|type|
++-----------------+----+
+|Fret et voyageurs|1057|
+|        Voyageurs|2268|
+|             Fret| 530|
++-----------------+----+
+
+end of the program
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+25/02/09 16:20:08 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[Stage 0:>                                                          (0 + 1) / 1]                                                                                [Stage 1:>                                                          (0 + 1) / 1]                                                                                [Stage 2:>                                                          (0 + 1) / 1]                                                                                [Stage 4:>                                                          (0 + 1) / 1]                                                                                [Stage 15:>                                                         (0 + 1) / 2][Stage 15:=============================>                            (1 + 1) / 2]                                                                                [Stage 18:>                                                         (0 + 1) / 1]                                                                                raw data saved to hdfs://localhost:9000/user/testbis/test.json
+Extracted and saved data from https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/liste-des-gares/records?limit=-1 in hdfs://localhost:9000/user/testbis/test.json
+root
+ |-- libelle: string (nullable = true)
+ |-- geo_point_2d: struct (nullable = true)
+ |    |-- lon: double (nullable = true)
+ |    |-- lat: double (nullable = true)
+ |-- departemen: string (nullable = true)
+ |-- fret: string (nullable = true)
+ |-- voyageurs: string (nullable = true)
+
++--------------------+--------------------+--------------------+----+---------+
+|             libelle|        geo_point_2d|          departemen|fret|voyageurs|
++--------------------+--------------------+--------------------+----+---------+
+|               Epfig|{7.45042847107005...|            BAS-RHIN|   N|        O|
+|      St-Pol-de-Léon|{-3.9873572013917...|           FINISTERE|   N|        O|
+|              Vannes|{-2.7524038812162...|            MORBIHAN|   O|        O|
+|          Bénestroff|{6.75062117390100...|             MOSELLE|   N|        O|
+|Château-Arnoux-St...|{5.99767202153532...|ALPES-DE-HAUTE-PR...|   O|        O|
++--------------------+--------------------+--------------------+----+---------+
+only showing top 5 rows
+
+data saved to hdfs://localhost:9000/user/testbis/clean.json
+transforming gares data
++--------------------+----------------+-----+---------+------------------+------------------+-----------------+
+|             libelle|      departemen| fret|voyageurs|          latitude|         longitude|             type|
++--------------------+----------------+-----+---------+------------------+------------------+-----------------+
+|           Abancourt|            OISE|false|     true| 49.68552581890106|1.7744954142042662|        Voyageurs|
+|            Abbaretz|LOIRE-ATLANTIQUE|false|     true| 47.55546171192477|-1.524313466657777|        Voyageurs|
+|           Abbeville|           SOMME| true|     true|50.101971205254344|1.8242999791392414|Fret et voyageurs|
+|               Ablon|    VAL-DE-MARNE|false|     true| 48.72396312660717| 2.417931573714534|        Voyageurs|
+|      Acheux-Franleu|           SOMME|false|     true| 50.08247940982133|1.6571743503789365|        Voyageurs|
+|              Achiet|   PAS-DE-CALAIS|false|     true| 50.13214093060273|2.7806221023317605|        Voyageurs|
+|Achères-Grand-Cor...|        YVELINES|false|     true|48.955284839240726| 2.092094579250712|        Voyageurs|
+|       Achères-Ville|        YVELINES|false|     true| 48.97011445873015|  2.07778153626187|        Voyageurs|
+|                Agay|             VAR|false|     true|   43.431734252121| 6.856677171132544|        Voyageurs|
+|                Agde|         HERAULT|false|     true| 43.31752025734746| 3.466942106026499|        Voyageurs|
++--------------------+----------------+-----+---------+------------------+------------------+-----------------+
+only showing top 10 rows
+
++-----------------+----+
+|             type|type|
++-----------------+----+
+|Fret et voyageurs|1057|
+|        Voyageurs|2268|
+|             Fret| 530|
++-----------------+----+
+
+end of the program
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+25/02/09 16:25:08 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[Stage 0:>                                                          (0 + 1) / 1]                                                                                [Stage 1:>                                                          (0 + 1) / 1]                                                                                [Stage 2:>                                                          (0 + 1) / 1]                                                                                [Stage 4:>                                                          (0 + 1) / 1]                                                                                [Stage 8:>                                                          (0 + 1) / 1]                                                                                [Stage 15:>                                                         (0 + 1) / 2][Stage 15:=============================>                            (1 + 1) / 2]                                                                                [Stage 18:>                                                         (0 + 1) / 1]                                                                                raw data saved to hdfs://localhost:9000/user/testbis/test.json
+Extracted and saved data from https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/liste-des-gares/records?limit=-1 in hdfs://localhost:9000/user/testbis/test.json
+root
+ |-- libelle: string (nullable = true)
+ |-- geo_point_2d: struct (nullable = true)
+ |    |-- lon: double (nullable = true)
+ |    |-- lat: double (nullable = true)
+ |-- departemen: string (nullable = true)
+ |-- fret: string (nullable = true)
+ |-- voyageurs: string (nullable = true)
+
++--------------------+--------------------+--------------------+----+---------+
+|             libelle|        geo_point_2d|          departemen|fret|voyageurs|
++--------------------+--------------------+--------------------+----+---------+
+|               Epfig|{7.45042847107005...|            BAS-RHIN|   N|        O|
+|      St-Pol-de-Léon|{-3.9873572013917...|           FINISTERE|   N|        O|
+|              Vannes|{-2.7524038812162...|            MORBIHAN|   O|        O|
+|          Bénestroff|{6.75062117390100...|             MOSELLE|   N|        O|
+|Château-Arnoux-St...|{5.99767202153532...|ALPES-DE-HAUTE-PR...|   O|        O|
++--------------------+--------------------+--------------------+----+---------+
+only showing top 5 rows
+
+data saved to hdfs://localhost:9000/user/testbis/clean.json
+transforming gares data
++--------------------+----------------+-----+---------+------------------+------------------+-----------------+
+|             libelle|      departemen| fret|voyageurs|          latitude|         longitude|             type|
++--------------------+----------------+-----+---------+------------------+------------------+-----------------+
+|           Abancourt|            OISE|false|     true| 49.68552581890106|1.7744954142042662|        Voyageurs|
+|            Abbaretz|LOIRE-ATLANTIQUE|false|     true| 47.55546171192477|-1.524313466657777|        Voyageurs|
+|           Abbeville|           SOMME| true|     true|50.101971205254344|1.8242999791392414|Fret et voyageurs|
+|               Ablon|    VAL-DE-MARNE|false|     true| 48.72396312660717| 2.417931573714534|        Voyageurs|
+|      Acheux-Franleu|           SOMME|false|     true| 50.08247940982133|1.6571743503789365|        Voyageurs|
+|              Achiet|   PAS-DE-CALAIS|false|     true| 50.13214093060273|2.7806221023317605|        Voyageurs|
+|Achères-Grand-Cor...|        YVELINES|false|     true|48.955284839240726| 2.092094579250712|        Voyageurs|
+|       Achères-Ville|        YVELINES|false|     true| 48.97011445873015|  2.07778153626187|        Voyageurs|
+|                Agay|             VAR|false|     true|   43.431734252121| 6.856677171132544|        Voyageurs|
+|                Agde|         HERAULT|false|     true| 43.31752025734746| 3.466942106026499|        Voyageurs|
++--------------------+----------------+-----+---------+------------------+------------------+-----------------+
+only showing top 10 rows
+
++-----------------+----+
+|             type|type|
++-----------------+----+
+|Fret et voyageurs|1057|
+|        Voyageurs|2268|
+|             Fret| 530|
++-----------------+----+
+
+end of the program
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+25/02/09 16:30:07 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[Stage 0:>                                                          (0 + 1) / 1]                                                                                [Stage 1:>                                                          (0 + 1) / 1]                                                                                [Stage 2:>                                                          (0 + 1) / 1]                                                                                [Stage 4:>                                                          (0 + 1) / 1]                                                                                [Stage 15:>                                                         (0 + 1) / 2][Stage 15:=============================>                            (1 + 1) / 2]                                                                                [Stage 18:>                                                         (0 + 1) / 1]                                                                                raw data saved to hdfs://localhost:9000/user/testbis/test.json
+Extracted and saved data from https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/liste-des-gares/records?limit=-1 in hdfs://localhost:9000/user/testbis/test.json
+root
+ |-- libelle: string (nullable = true)
+ |-- geo_point_2d: struct (nullable = true)
+ |    |-- lon: double (nullable = true)
+ |    |-- lat: double (nullable = true)
+ |-- departemen: string (nullable = true)
+ |-- fret: string (nullable = true)
+ |-- voyageurs: string (nullable = true)
+
++--------------------+--------------------+--------------------+----+---------+
+|             libelle|        geo_point_2d|          departemen|fret|voyageurs|
++--------------------+--------------------+--------------------+----+---------+
+|               Epfig|{7.45042847107005...|            BAS-RHIN|   N|        O|
+|      St-Pol-de-Léon|{-3.9873572013917...|           FINISTERE|   N|        O|
+|              Vannes|{-2.7524038812162...|            MORBIHAN|   O|        O|
+|          Bénestroff|{6.75062117390100...|             MOSELLE|   N|        O|
+|Château-Arnoux-St...|{5.99767202153532...|ALPES-DE-HAUTE-PR...|   O|        O|
++--------------------+--------------------+--------------------+----+---------+
+only showing top 5 rows
+
+data saved to hdfs://localhost:9000/user/testbis/clean.json
+transforming gares data
++--------------------+----------------+-----+---------+------------------+------------------+-----------------+
+|             libelle|      departemen| fret|voyageurs|          latitude|         longitude|             type|
++--------------------+----------------+-----+---------+------------------+------------------+-----------------+
+|           Abancourt|            OISE|false|     true| 49.68552581890106|1.7744954142042662|        Voyageurs|
+|            Abbaretz|LOIRE-ATLANTIQUE|false|     true| 47.55546171192477|-1.524313466657777|        Voyageurs|
+|           Abbeville|           SOMME| true|     true|50.101971205254344|1.8242999791392414|Fret et voyageurs|
+|               Ablon|    VAL-DE-MARNE|false|     true| 48.72396312660717| 2.417931573714534|        Voyageurs|
+|      Acheux-Franleu|           SOMME|false|     true| 50.08247940982133|1.6571743503789365|        Voyageurs|
+|              Achiet|   PAS-DE-CALAIS|false|     true| 50.13214093060273|2.7806221023317605|        Voyageurs|
+|Achères-Grand-Cor...|        YVELINES|false|     true|48.955284839240726| 2.092094579250712|        Voyageurs|
+|       Achères-Ville|        YVELINES|false|     true| 48.97011445873015|  2.07778153626187|        Voyageurs|
+|                Agay|             VAR|false|     true|   43.431734252121| 6.856677171132544|        Voyageurs|
+|                Agde|         HERAULT|false|     true| 43.31752025734746| 3.466942106026499|        Voyageurs|
++--------------------+----------------+-----+---------+------------------+------------------+-----------------+
+only showing top 10 rows
+
++-----------------+----+
+|             type|type|
++-----------------+----+
+|Fret et voyageurs|1057|
+|        Voyageurs|2268|
+|             Fret| 530|
++-----------------+----+
+
+end of the program
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+25/02/09 16:35:07 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[Stage 0:>                                                          (0 + 1) / 1][Stage 0:===========================================================(1 + 0) / 1]                                                                                [Stage 1:>                                                          (0 + 1) / 1]                                                                                [Stage 2:>                                                          (0 + 1) / 1]                                                                                [Stage 4:>                                                          (0 + 1) / 1]                                                                                [Stage 15:>                                                         (0 + 1) / 2][Stage 15:=============================>                            (1 + 1) / 2]                                                                                [Stage 18:>                                                         (0 + 1) / 1]                                                                                raw data saved to hdfs://localhost:9000/user/testbis/test.json
+Extracted and saved data from https://ressources.data.sncf.com/api/explore/v2.1/catalog/datasets/liste-des-gares/records?limit=-1 in hdfs://localhost:9000/user/testbis/test.json
+root
+ |-- libelle: string (nullable = true)
+ |-- geo_point_2d: struct (nullable = true)
+ |    |-- lon: double (nullable = true)
+ |    |-- lat: double (nullable = true)
+ |-- departemen: string (nullable = true)
+ |-- fret: string (nullable = true)
+ |-- voyageurs: string (nullable = true)
+
++--------------------+--------------------+--------------------+----+---------+
+|             libelle|        geo_point_2d|          departemen|fret|voyageurs|
++--------------------+--------------------+--------------------+----+---------+
+|               Epfig|{7.45042847107005...|            BAS-RHIN|   N|        O|
+|      St-Pol-de-Léon|{-3.9873572013917...|           FINISTERE|   N|        O|
+|              Vannes|{-2.7524038812162...|            MORBIHAN|   O|        O|
+|          Bénestroff|{6.75062117390100...|             MOSELLE|   N|        O|
+|Château-Arnoux-St...|{5.99767202153532...|ALPES-DE-HAUTE-PR...|   O|        O|
++--------------------+--------------------+--------------------+----+---------+
+only showing top 5 rows
+
+data saved to hdfs://localhost:9000/user/testbis/clean.json
+transforming gares data
++--------------------+----------------+-----+---------+------------------+------------------+-----------------+
+|             libelle|      departemen| fret|voyageurs|          latitude|         longitude|             type|
++--------------------+----------------+-----+---------+------------------+------------------+-----------------+
+|           Abancourt|            OISE|false|     true| 49.68552581890106|1.7744954142042662|        Voyageurs|
+|            Abbaretz|LOIRE-ATLANTIQUE|false|     true| 47.55546171192477|-1.524313466657777|        Voyageurs|
+|           Abbeville|           SOMME| true|     true|50.101971205254344|1.8242999791392414|Fret et voyageurs|
+|               Ablon|    VAL-DE-MARNE|false|     true| 48.72396312660717| 2.417931573714534|        Voyageurs|
+|      Acheux-Franleu|           SOMME|false|     true| 50.08247940982133|1.6571743503789365|        Voyageurs|
+|              Achiet|   PAS-DE-CALAIS|false|     true| 50.13214093060273|2.7806221023317605|        Voyageurs|
+|Achères-Grand-Cor...|        YVELINES|false|     true|48.955284839240726| 2.092094579250712|        Voyageurs|
+|       Achères-Ville|        YVELINES|false|     true| 48.97011445873015|  2.07778153626187|        Voyageurs|
+|                Agay|             VAR|false|     true|   43.431734252121| 6.856677171132544|        Voyageurs|
+|                Agde|         HERAULT|false|     true| 43.31752025734746| 3.466942106026499|        Voyageurs|
++--------------------+----------------+-----+---------+------------------+------------------+-----------------+
+only showing top 10 rows
+
++-----------------+----+
+|             type|type|
++-----------------+----+
+|Fret et voyageurs|1057|
+|        Voyageurs|2268|
+|             Fret| 530|
++-----------------+----+
+
+end of the program
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+25/02/09 16:40:15 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[Stage 0:>                                                          (0 + 0) / 1][Stage 0:>                                                          (0 + 1) / 1]                                                                                [Stage 1:>                                                          (0 + 1) / 1]                                                                                [Stage 2:>                                                          (0 + 1) / 1]                                                                                [Stage 4:>                                                          (0 + 1) / 1]                                                                                [Stage 8:>                                                          (0 + 1) / 1][Stage 9:>                                                          (0 + 1) / 1]                                                                                [Stage 15:>                                                         (0 + 1) / 2]
